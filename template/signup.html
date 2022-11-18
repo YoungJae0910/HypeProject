@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../static/signup.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+<body>
+
+    <form>
+        <!-- 구글 깃헙 회원가입버튼 -->
+        <div class="">
+            <button class="...">구글</button>
+            <button class="...">깃헙</button>
+        </div>
+
+        <!-- 회원가입페이지 -->
+        <div>
+            <h1 class="...">회원가입</h1>
+        </div>
+        
+        <!-- 회원가입시 이메일 input -->
+        <div>
+            <div>
+                <p class="...">email</p>
+                <input type="email" id="signUpEmail" class="..." />
+            </div>
+
+            <div>
+                <p class="...">email확인</p>
+                <input type="email" id="signUpEmail" class="..." />
+            </div>
+
+            <div> 
+                <p class="...">password</p>
+                <input type="password" id="signUpPassword" class="..."/> 
+            </div>
+
+            <div> 
+                <p class="...">password확인</p>
+                <input type="password" id="signUpPassword" class="..."/> 
+            </div>
+        </div>
+        
+        <!-- 회원가입완료버튼 -->
+        <div>
+            <button type="submit" id="signUpButton" class="..." >회원가입</button>
+        </div>
+
+        <!-- 이미회원일경우 로그인페이지로 이동 -->
+        <div>
+            <a href="../template/signin.html">이미 회원 이신가요?</a>
+        </div>
+    </form>
+
+  
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCH_qQKgvX04MCiInM0t-1el2gXoNc9YpI",
+          authDomain: "easylogin-69172.firebaseapp.com",
+          projectId: "easylogin-69172",
+          storageBucket: "easylogin-69172.appspot.com",
+          messagingSenderId: "507786873248",
+          appId: "1:507786873248:web:a4effc2440a8e81bfbfcc5",
+          measurementId: "G-X3G15GWG5T"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import { getAuth, createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js";
+
+        const auth = getAuth();
+
+        document.getElementById('signUpButton').addEventListener('click', (event) => {
+            event.preventDefault()
+            const signUpEmail = document.getElementById('signUpEmail').value
+            const signUpPassword = document.getElementById('signUpPassword').value
+
+            createUserWithEmailAndPassword(auth, signUpEmail, signUpPassword)
+                .then((userCredential) => {
+                    console.log(userCredential)
+                    // Signed in
+                    const user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    console.log('error')
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // ..
+                });
+
+        })
+
+      </script>
+</body>
+</html>
