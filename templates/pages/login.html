@@ -1,0 +1,33 @@
+<div id="loginPage">
+  <div id="loginLogo">
+    <h1 id="loginTitle">계속하려면 HYPE EXPRESS로 로그인하세요</h1>
+    <!--소셜 로그인-->
+    <section class="socialBtns">
+      <button name="google" onclick="socialLogin(event)">
+        GITHUB로 계속하기
+      </button>
+      <button name="github" onclick="socialLogin(event)">
+        GOOGLE로 계속하기
+      </button>
+    </section>
+    <!--절취선 부분-->
+    <div class="loginOrSecetion">
+      <hr class="loginLine" />
+      <span class="loginOr">또는</span>
+      <hr class="loginLine" />
+    </div>
+    <!--로그인-->
+    <form onsubmit="handleLogin(event)">
+      <div>이메일 주소 또는 사용자 이름 : <input type="text" id="email" /></div>
+      <div>비밀번호 : <input type="password" id="pw" /></div>
+      <section id="loginBtnSection">
+        <input type="submit" id="loginBtn" value="로그인하기" />
+      </section>
+      <hr class="loginLine" />
+      <h2 id="loginSubtitle">계정이 없나요?</h2>
+      <section id="signinBtnSection">
+        <input type="submit" id="loginBtn" value="HYPE EXPRESS에 가입하기" />
+      </section>
+    </form>
+  </div>
+</div>
